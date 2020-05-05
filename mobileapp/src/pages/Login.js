@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { View,
-    KeyboardAvoidingView,
-    Platform,
+import {View,
     Text,
     Image,
     StyleSheet,
     TextInput,
     TouchableOpacity,
     AsyncStorage,
-    StatusBar } from 'react-native';
+     } from 'react-native'
+
     import api from '../services/api';
     import logo from '../assets/logo.png'
 // import { Container } from './styles';
@@ -17,6 +16,7 @@ export default function Login({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [techs, setTechs] = useState('')
+   
 
     useEffect(()=>{
         AsyncStorage.getItem('user').then( user => {
@@ -45,8 +45,9 @@ export default function Login({navigation}) {
         setTechs(text)
     }
   return (
-     <KeyboardAvoidingView enabled={Platform.OS === 'ios'} behavior="padding" style={styles.container}>
-         
+    //<ScrollView>
+       
+     <View style={styles.container}>
        <Image source={logo}/>
        <View style={styles.form}>
        <Text style={styles.label}>SEU E-MAIL *</Text> 
@@ -69,9 +70,13 @@ export default function Login({navigation}) {
         autoCapitalize="none"
         autoCorrect={false}
         value={password} 
-        onChangeText={passOnChangeText} />
+        onChangeText={passOnChangeText}>
+            
+        </TextInput>
+        
 
 <Text style={styles.label}>TECNOLOGIAS *</Text> 
+
        <TextInput 
         style={styles.input}
         placeholder="Tecnologias de interesse"
@@ -85,17 +90,21 @@ export default function Login({navigation}) {
             <Text style={styles.buttonText}>Encontrar Spots</Text>
         </TouchableOpacity>
        </View>
-    </KeyboardAvoidingView>
+    </View>
+ //  </ScrollView>
+    
+  
   );
 }
 
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#fff',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+   
         
     },
     form:{
@@ -126,6 +135,7 @@ const styles = StyleSheet.create({
          justifyContent: 'center',
          alignItems:'center',
         borderRadius:2,
+        
         },
      buttonText:{
          color: '#fff',
