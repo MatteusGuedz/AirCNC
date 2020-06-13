@@ -1,5 +1,8 @@
 # AirCnC
-> Aplicação para empresas que permitem a visita de Devs para networking e conhecimento
+  <div>
+<img src="https://github.com/robertomendoncaa/aircnc/raw/master/mobile/src/assets/logo.svg?sanitize=true" />
+</div>
+
 
 ## ~ Desenvoldido com as Tecnologias:
 
